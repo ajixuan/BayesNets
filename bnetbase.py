@@ -273,6 +273,21 @@ class Factor:
                 vars[0].set_assignment(val)
                 self.recursive_print_values(vars[1:])
 
+    def recursive_generate_distros(self, vars, acc=[]):
+        if len(vars) == 0:
+            #Create the final list
+            lst = []
+            for v in self.scope:
+                lst.append(v.get_assignment())
+            lst.append(self.get_value_at_current_assignments())
+            acc.append(lst)
+            print(lst)
+            return acc
+        else:
+            for val in vars[0].domain():
+                vars[0].set_assignment(val)
+                self.recursive_generate_distros(vars[1:], acc)
+
     def __repr__(self):
         return("{}({})".format(self.name, list(map(lambda x: x.name, self.scope))))
 

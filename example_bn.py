@@ -89,6 +89,10 @@ Q3 = BN('SampleQ4', [E,B,S,G,W], [FE,FB,FS,FG,FW])
 
 
 if __name__ == '__main__':
+    #Running test for recursive generate
+    print("Running test for F1")
+    F6.recursive_generate_distros(F6.get_scope())
+    
     #(a)
     print("Question 5a")
     G.set_evidence('g')
